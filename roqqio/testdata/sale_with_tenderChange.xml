@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POSLog xsi:schemaLocation="http://www.nrf-arts.org/IXRetail/namespace/ ../POSLogV6.0.0.xsd" xmlns="http://www.nrf-arts.org/IXRetail/namespace/" xmlns:fu="http://www.futura4retail.com/pos/namespace/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" MajorVersion="6" MinorVersion="0" FixVersion="0">
+   <Transaction>
+      <BusinessUnit>
+         <UnitID Name="Christian Schmied IT">100</UnitID>
+      </BusinessUnit>
+      <WorkstationID TypeCode="POS">10001</WorkstationID>
+      <SequenceNumber>3</SequenceNumber>
+      <POSLogDateTime>2024-07-31T12:21:47.539</POSLogDateTime>
+      <OperatorID OperatorName="NullPerson NullPerson" OperatorType="Cashier">0</OperatorID>
+      <ReceiptDateTime>2024-07-31T12:21:47.539</ReceiptDateTime>
+      <ReceiptNumber>3</ReceiptNumber>
+      <RetailTransaction>
+         <LineItem>
+            <Sale>
+               <ItemID Name="PUMA WOMEN PADDED TOP 1P HANG, XS,GREY MELANGE,032">8718824914435</ItemID>
+               <RegularSalesUnitPrice Currency="EUR">26.990</RegularSalesUnitPrice>
+               <ActualSalesUnitPrice Currency="EUR">26.990</ActualSalesUnitPrice>
+               <ExtendedAmount Currency="EUR">26.990</ExtendedAmount>
+               <ExtendedDiscountAmount Currency="XXX">0</ExtendedDiscountAmount>
+               <Quantity UnitOfMeasureCode="EA">1.0000</Quantity>
+               <Rounding Currency="EUR">0.000</Rounding>
+               <fu:SalesMode>MODE_NORMAL</fu:SalesMode>
+               <fu:LineType>ITEM_SALE</fu:LineType>
+               <fu:Dimension1>XS</fu:Dimension1>
+               <fu:Dimension2>GREY MELANGE</fu:Dimension2>
+               <fu:Dimension3>032</fu:Dimension3>
+               <fu:ProductGroup>1122702</fu:ProductGroup>
+            </Sale>
+            <SequenceNumber>1</SequenceNumber>
+         </LineItem>
+         <LineItem>
+            <Tender TenderType="Cash" TypeCode="Sale">
+               <Amount Currency="EUR">27.000</Amount>
+               <Rounding>0.000</Rounding>
+               <fu:PaymentTypeExternalId>1</fu:PaymentTypeExternalId>
+               <fu:PaymentTypeDescription>Bar</fu:PaymentTypeDescription>
+            </Tender>
+            <SequenceNumber>3</SequenceNumber>
+         </LineItem>
+         <LineItem>
+            <TenderChange TypeCode="Refund">
+               <TenderChange TenderType="Cash">
+                  <Amount Currency="EUR">0.010</Amount>
+               </TenderChange>
+               <Rounding>0.000</Rounding>
+            </TenderChange>
+            <SequenceNumber>5</SequenceNumber>
+         </LineItem>
+         <Total TotalType="TransactionGrandAmount" CurrencyCode="EUR">26.990</Total>
+         <Total TotalType="TransactionNetAmount" CurrencyCode="EUR">22.680</Total>
+         <Total TotalType="TransactionTaxAmount" CurrencyCode="EUR">4.310</Total>
+         <Total TotalType="TransactionGrossAmount" CurrencyCode="EUR">26.990</Total>
+      </RetailTransaction>
+      <BusinessDayDate>2024-07-31</BusinessDayDate>
+      <BeginDateTime>2024-07-31T10:21:14.639Z</BeginDateTime>
+      <EndDateTime>2024-07-31T10:21:47.539Z</EndDateTime>
+      <fu:Hashcode>LNK/S2/V6:2/[invalid]</fu:Hashcode>
+   </Transaction>
+</POSLog>
