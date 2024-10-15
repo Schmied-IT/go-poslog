@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POSLog xsi:schemaLocation="http://www.nrf-arts.org/IXRetail/namespace/ ../POSLogV6.0.0.xsd" xmlns="http://www.nrf-arts.org/IXRetail/namespace/" xmlns:fu="http://www.futura4retail.com/pos/namespace/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" MajorVersion="6" MinorVersion="0" FixVersion="0">
+   <Transaction>
+      <BusinessUnit>
+         <UnitID Name="Christian Schmied IT">100</UnitID>
+      </BusinessUnit>
+      <WorkstationID TypeCode="POS">10001</WorkstationID>
+      <SequenceNumber>3570</SequenceNumber>
+      <POSLogDateTime>2024-10-15T11:27:02.649</POSLogDateTime>
+      <OperatorID OperatorName="NullPerson NullPerson" OperatorType="Cashier">0</OperatorID>
+      <ReceiptDateTime>2024-10-15T11:27:02.649</ReceiptDateTime>
+      <ReceiptNumber>3570</ReceiptNumber>
+      <RetailTransaction>
+         <LineItem>
+            <Sale>
+               <ItemID Name="BULL'S Motex Flights, -,MEHRFARBIGES MOTIV,011">4022847522022</ItemID>
+               <RegularSalesUnitPrice Currency="EUR">1.290</RegularSalesUnitPrice>
+               <ActualSalesUnitPrice Currency="EUR">1.290</ActualSalesUnitPrice>
+               <ExtendedAmount Currency="EUR">1.290</ExtendedAmount>
+               <ExtendedDiscountAmount Currency="XXX">0</ExtendedDiscountAmount>
+               <Quantity UnitOfMeasureCode="EA">-1.0000</Quantity>
+               <TransactionLink>
+                  <TransactionID>3569</TransactionID>
+                  <BusinessUnit Name="Christian Schmied IT">100</BusinessUnit>
+                  <WorkstationID TypeCode="POS">10001</WorkstationID>
+                  <BusinessDayDate>
+                     <Date>2024-10-15</Date>
+                  </BusinessDayDate>
+                  <SequenceNumber>3569</SequenceNumber>
+                  <LineItemSequenceNumber>4</LineItemSequenceNumber>
+               </TransactionLink>
+               <Rounding Currency="EUR">0.000</Rounding>
+               <fu:SalesMode>RETOUR</fu:SalesMode>
+               <fu:LineType>ITEM_SALE</fu:LineType>
+               <fu:Dimension1>-</fu:Dimension1>
+               <fu:Dimension2>MEHRFARBIGES MOTIV</fu:Dimension2>
+               <fu:Dimension3>011</fu:Dimension3>
+               <fu:ProductGroup>8091115</fu:ProductGroup>
+            </Sale>
+            <SequenceNumber>1</SequenceNumber>
+         </LineItem>
+         <LineItem>
+            <Tender TenderType="Cash" TypeCode="Refund">
+               <Amount Currency="EUR">1.290</Amount>
+               <Rounding>0.000</Rounding>
+               <fu:PaymentTypeExternalId>1</fu:PaymentTypeExternalId>
+               <fu:PaymentTypeDescription>Bar</fu:PaymentTypeDescription>
+            </Tender>
+            <SequenceNumber>4</SequenceNumber>
+         </LineItem>
+         <Total TotalType="TransactionGrandAmount" CurrencyCode="EUR">-1.290</Total>
+         <Total TotalType="TransactionNetAmount" CurrencyCode="EUR">-1.080</Total>
+         <Total TotalType="TransactionTaxAmount" CurrencyCode="EUR">-0.210</Total>
+         <Total TotalType="TransactionGrossAmount" CurrencyCode="EUR">-1.290</Total>
+
+         <Customer Gender="Female">
+            <CustomerID>22000129</CustomerID>
+            <Name>
+               <OfficialName>Erika Mustermann</OfficialName>
+            </Name>
+            <Address AddressType="Home">
+               <AddressLine TypeCode="Street">Heidestrasse</AddressLine>
+               <City>Köln</City>
+               <Territory TypeCode="State"></Territory>
+               <PostalCode>51147</PostalCode>
+               <Country Code="DE"/>
+            </Address>
+            <BirthDayMonth>--08-12Z</BirthDayMonth>
+            <BirthYear>1964Z</BirthYear>
+         </Customer>
+         <LoyaltyAccount>
+            <CustomerID>22000129</CustomerID>
+            <LoyaltyCard>
+               <PrimaryAccountNumber>T220001293</PrimaryAccountNumber>
+            </LoyaltyCard>
+         </LoyaltyAccount>
+      </RetailTransaction>
+      <BusinessDayDate>2024-10-15</BusinessDayDate>
+      <BeginDateTime>2024-10-15T09:26:27.433Z</BeginDateTime>
+      <EndDateTime>2024-10-15T09:27:02.649Z</EndDateTime>
+      <fu:Hashcode>LNK/S2/V6:3569/ba39f79318d327b4e732eef6444a4c2122c89ac7fd36a2c05b44e41abdd50a6a6cab9d6a586922c4fa6d932cbbfb91dfe20b6e99ca3a949e304d81ee80ffa5f6</fu:Hashcode>
+   </Transaction>
+</POSLog>

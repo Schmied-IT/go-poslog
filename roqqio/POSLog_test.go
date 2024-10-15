@@ -82,6 +82,39 @@ func TestRetoureXml(t *testing.T) {
 	assertThat(t, lineItems[1].IsTender(), true)
 	assertThat(t, lineItems[1].IsTenderChange(), false)
 	assertThat(t, lineItems[1].Tender.TypeCode, TenderTypeCodeRefund)
+
+	// should not contain a TransactionLink, because retoure without Receipt
+	assertNil(t, lineItems[0].Sale.TransactionLink)
+}
+
+func TestRetoureWithLinkXml(t *testing.T) {
+	posLog := handleXmlFile(t, "testdata/retoure_with_link.xml")
+	assertNotNil(t, posLog.Transaction.RetailTransaction.Customer)
+	assertNotNil(t, posLog.GetCustomer())
+	assertNotNil(t, posLog.GetLoyaltyAccount())
+
+	assertNotNil(t, posLog.GetLineItems())
+	assertThat(t, len(*posLog.GetLineItems()), 2)
+
+	lineItems := *posLog.GetLineItems()
+	assertThat(t, lineItems[0].GetType(), LineTypeSale)
+	assertThat(t, lineItems[0].IsSale(), true)
+	assertThat(t, lineItems[0].IsTender(), false)
+	assertThat(t, lineItems[0].IsTenderChange(), false)
+	assertThat(t, lineItems[0].Sale.Quantity.Value < 0, true)
+	assertThat(t, lineItems[0].Sale.Quantity.Value, -1.0)
+	assertThat(t, lineItems[0].Sale.ActualSalesUnitPrice.Value > 0, true) // Prices are Always Positive
+
+	assertThat(t, lineItems[1].GetType(), LineTypeTender)
+	assertThat(t, lineItems[1].IsSale(), false)
+	assertThat(t, lineItems[1].IsTender(), true)
+	assertThat(t, lineItems[1].IsTenderChange(), false)
+	assertThat(t, lineItems[1].Tender.TypeCode, TenderTypeCodeRefund)
+
+	// should handle the same as normal retoure but LineItem should contain a Linkage
+	assertNotNil(t, lineItems[0].Sale.TransactionLink)
+	assertThat(t, lineItems[0].Sale.TransactionLink.SequenceNumber, "3569")
+	assertThat(t, lineItems[0].Sale.TransactionLink.BusinessDayDate, "2024-10-15")
 }
 
 func assertNotNil[C any](t *testing.T, a *C) {

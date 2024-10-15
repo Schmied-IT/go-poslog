@@ -120,9 +120,19 @@ type Sale struct {
 		UnitOfMeasureCode string  `xml:"UnitOfMeasureCode,attr"`
 		Value             float64 `xml:",chardata"`
 	} `xml:"Quantity"`
-	RegularSalesUnitPrice CurrencyAmount `xml:"RegularSalesUnitPrice"`
-	Rounding              CurrencyAmount `xml:"Rounding"`
-	SalesMode             string         `xml:"SalesMode"`
+	RegularSalesUnitPrice CurrencyAmount   `xml:"RegularSalesUnitPrice"`
+	Rounding              CurrencyAmount   `xml:"Rounding"`
+	SalesMode             string           `xml:"SalesMode"`
+	TransactionLink       *TransactionLink `xml:"TransactionLink"`
+}
+
+type TransactionLink struct {
+	TransactionID          string        `xml:"TransactionID"`
+	BusinessUnit           BusinessUnit  `xml:"BusinessUnit"`
+	WorkstationID          WorkstationID `xml:"WorkstationID"`
+	BusinessDayDate        string        `xml:"BusinessDayDate>Date"`
+	SequenceNumber         string        `xml:"SequenceNumber"`
+	LineItemSequenceNumber string        `xml:"LineItemSequenceNumber"`
 }
 
 type Tender struct {

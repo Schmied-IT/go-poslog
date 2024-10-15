@@ -42,7 +42,7 @@
          <Total TotalType="TransactionNetAmount" CurrencyCode="EUR">-2.510</Total>
          <Total TotalType="TransactionTaxAmount" CurrencyCode="EUR">-0.480</Total>
          <Total TotalType="TransactionGrossAmount" CurrencyCode="EUR">-2.990</Total>
-         <Customer Gender="Male">
+         <Customer Gender="Female">
             <CustomerID>22000129</CustomerID>
             <Name>
                <OfficialName>Erika Mustermann</OfficialName>
