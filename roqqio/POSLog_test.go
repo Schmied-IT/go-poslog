@@ -51,11 +51,37 @@ func TestTenderChangeXml(t *testing.T) {
 	assertThat(t, lineItems[1].IsSale(), false)
 	assertThat(t, lineItems[1].IsTender(), true)
 	assertThat(t, lineItems[1].IsTenderChange(), false)
+	assertThat(t, lineItems[1].Tender.TypeCode, TenderTypeCodeSale)
 
 	assertThat(t, lineItems[2].GetType(), LineTypeTenderChange)
 	assertThat(t, lineItems[2].IsSale(), false)
 	assertThat(t, lineItems[2].IsTender(), false)
 	assertThat(t, lineItems[2].IsTenderChange(), true)
+}
+
+func TestRetoureXml(t *testing.T) {
+	posLog := handleXmlFile(t, "testdata/retoure.xml")
+	assertNotNil(t, posLog.Transaction.RetailTransaction.Customer)
+	assertNotNil(t, posLog.GetCustomer())
+	assertNotNil(t, posLog.GetLoyaltyAccount())
+
+	assertNotNil(t, posLog.GetLineItems())
+	assertThat(t, len(*posLog.GetLineItems()), 2)
+
+	lineItems := *posLog.GetLineItems()
+	assertThat(t, lineItems[0].GetType(), LineTypeSale)
+	assertThat(t, lineItems[0].IsSale(), true)
+	assertThat(t, lineItems[0].IsTender(), false)
+	assertThat(t, lineItems[0].IsTenderChange(), false)
+	assertThat(t, lineItems[0].Sale.Quantity.Value < 0, true)
+	assertThat(t, lineItems[0].Sale.Quantity.Value, -1.0)
+	assertThat(t, lineItems[0].Sale.ActualSalesUnitPrice.Value > 0, true) // Prices are Always Positive
+
+	assertThat(t, lineItems[1].GetType(), LineTypeTender)
+	assertThat(t, lineItems[1].IsSale(), false)
+	assertThat(t, lineItems[1].IsTender(), true)
+	assertThat(t, lineItems[1].IsTenderChange(), false)
+	assertThat(t, lineItems[1].Tender.TypeCode, TenderTypeCodeRefund)
 }
 
 func assertNotNil[C any](t *testing.T, a *C) {

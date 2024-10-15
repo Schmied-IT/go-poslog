@@ -9,6 +9,11 @@ const (
 	LineTypeUnknown      = "Unknown"
 )
 
+const (
+	TenderTypeCodeSale   = "Sale"
+	TenderTypeCodeRefund = "Refund"
+)
+
 type POSLog struct {
 	Transaction Transaction `xml:"Transaction"`
 }
@@ -112,13 +117,14 @@ type Sale struct {
 	LineType     string `xml:"LineType"`
 	ProductGroup string `xml:"ProductGroup"`
 	Quantity     struct {
-		UnitOfMeasureCode string `xml:"UnitOfMeasureCode,attr"`
-		CharData          string `xml:",chardata"`
+		UnitOfMeasureCode string  `xml:"UnitOfMeasureCode,attr"`
+		Value             float64 `xml:",chardata"`
 	} `xml:"Quantity"`
 	RegularSalesUnitPrice CurrencyAmount `xml:"RegularSalesUnitPrice"`
 	Rounding              CurrencyAmount `xml:"Rounding"`
 	SalesMode             string         `xml:"SalesMode"`
 }
+
 type Tender struct {
 	TenderType             string         `xml:"TenderType,attr"`
 	TypeCode               string         `xml:"TypeCode,attr"`
@@ -137,8 +143,8 @@ type TenderChange struct {
 }
 
 type CurrencyAmount struct {
-	Currency string `xml:"Currency,attr"`
-	CharData string `xml:",chardata"`
+	Currency string  `xml:"Currency,attr"`
+	Value    float64 `xml:",chardata"`
 }
 
 func (l *LineItem) GetType() string {

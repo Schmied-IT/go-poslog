@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POSLog xsi:schemaLocation="http://www.nrf-arts.org/IXRetail/namespace/ ../POSLogV6.0.0.xsd" xmlns="http://www.nrf-arts.org/IXRetail/namespace/" xmlns:fu="http://www.futura4retail.com/pos/namespace/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" MajorVersion="6" MinorVersion="0" FixVersion="0">
+   <Transaction>
+      <BusinessUnit>
+         <UnitID Name="Christian Schmied IT">300</UnitID>
+      </BusinessUnit>
+      <WorkstationID TypeCode="POS">30001</WorkstationID>
+      <SequenceNumber>1888</SequenceNumber>
+      <POSLogDateTime>2024-09-26T17:06:56.741</POSLogDateTime>
+      <OperatorID OperatorName="NullPerson NullPerson" OperatorType="Cashier">0</OperatorID>
+      <ReceiptDateTime>2024-09-26T17:06:56.741</ReceiptDateTime>
+      <ReceiptNumber>1888</ReceiptNumber>
+      <RetailTransaction>
+         <LineItem>
+            <Sale>
+               <ItemID Name="He.-Regenponcho Festival II, M,TRANSPARENT,893">4025929673704</ItemID>
+               <RegularSalesUnitPrice Currency="EUR">2.990</RegularSalesUnitPrice>
+               <ActualSalesUnitPrice Currency="EUR">2.990</ActualSalesUnitPrice>
+               <ExtendedAmount Currency="EUR">2.990</ExtendedAmount>
+               <ExtendedDiscountAmount Currency="XXX">0</ExtendedDiscountAmount>
+               <Quantity UnitOfMeasureCode="EA">-1.0000</Quantity>
+               <Rounding Currency="EUR">0.000</Rounding>
+               <fu:SalesMode>RETOUR</fu:SalesMode>
+               <fu:LineType>ITEM_SALE</fu:LineType>
+               <fu:Dimension1>M</fu:Dimension1>
+               <fu:Dimension2>TRANSPARENT</fu:Dimension2>
+               <fu:Dimension3>893</fu:Dimension3>
+               <fu:ProductGroup>1422241</fu:ProductGroup>
+            </Sale>
+            <SequenceNumber>1</SequenceNumber>
+         </LineItem>
+         <LineItem>
+            <Tender TenderType="Cash" TypeCode="Refund">
+               <Amount Currency="EUR">2.990</Amount>
+               <Rounding>0.000</Rounding>
+               <fu:PaymentTypeExternalId>1</fu:PaymentTypeExternalId>
+               <fu:PaymentTypeDescription>Bar</fu:PaymentTypeDescription>
+            </Tender>
+            <SequenceNumber>3</SequenceNumber>
+         </LineItem>
+         <Total TotalType="TransactionGrandAmount" CurrencyCode="EUR">-2.990</Total>
+         <Total TotalType="TransactionNetAmount" CurrencyCode="EUR">-2.510</Total>
+         <Total TotalType="TransactionTaxAmount" CurrencyCode="EUR">-0.480</Total>
+         <Total TotalType="TransactionGrossAmount" CurrencyCode="EUR">-2.990</Total>
+         <Customer Gender="Male">
+            <CustomerID>22000129</CustomerID>
+            <Name>
+               <OfficialName>Erika Mustermann</OfficialName>
+            </Name>
+            <Address AddressType="Home">
+               <AddressLine TypeCode="Street">Heidestrasse</AddressLine>
+               <City>Köln</City>
+               <Territory TypeCode="State"></Territory>
+               <PostalCode>51147</PostalCode>
+               <Country Code="DE"/>
+            </Address>
+            <BirthDayMonth>--08-12Z</BirthDayMonth>
+            <BirthYear>1964Z</BirthYear>
+         </Customer>
+         <LoyaltyAccount>
+            <CustomerID>22000129</CustomerID>
+            <LoyaltyCard>
+               <PrimaryAccountNumber>T220001293</PrimaryAccountNumber>
+            </LoyaltyCard>
+         </LoyaltyAccount>
+      </RetailTransaction>
+      <BusinessDayDate>2024-09-26</BusinessDayDate>
+      <BeginDateTime>2024-09-26T15:06:08.399Z</BeginDateTime>
+      <EndDateTime>2024-09-26T15:06:56.741Z</EndDateTime>
+      <fu:Hashcode>LNK/S2/V6:1887/[invalid]</fu:Hashcode>
+   </Transaction>
+</POSLog>
