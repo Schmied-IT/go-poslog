@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POSLog xsi:schemaLocation="http://www.nrf-arts.org/IXRetail/namespace/ ../POSLogV6.0.0.xsd" xmlns="http://www.nrf-arts.org/IXRetail/namespace/" xmlns:fu="http://www.futura4retail.com/pos/namespace/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" MajorVersion="6" MinorVersion="0" FixVersion="0">
+   <Transaction>
+      <BusinessUnit>
+         <UnitID Name="Christian Schmied IT">100</UnitID>
+      </BusinessUnit>
+      <WorkstationID TypeCode="POS">10001</WorkstationID>
+      <SequenceNumber>3617</SequenceNumber>
+      <POSLogDateTime>2024-10-15T14:11:12.214</POSLogDateTime>
+      <OperatorID OperatorName="NullPerson NullPerson" OperatorType="Cashier">0</OperatorID>
+      <ReceiptDateTime>2024-10-15T14:11:12.214</ReceiptDateTime>
+      <ReceiptNumber>3617</ReceiptNumber>
+      <RetailTransaction>
+         <LineItem>
+            <Sale>
+               <ItemID Name="BULL'S B-Star Flights, -,MEHRFARBIGES MOTIV,011">4022847518216</ItemID>
+               <RegularSalesUnitPrice Currency="EUR">1.490</RegularSalesUnitPrice>
+               <ActualSalesUnitPrice Currency="EUR">1.490</ActualSalesUnitPrice>
+               <ExtendedAmount Currency="EUR">1.490</ExtendedAmount>
+               <ExtendedDiscountAmount Currency="XXX">0</ExtendedDiscountAmount>
+               <Quantity UnitOfMeasureCode="EA">1.0000</Quantity>
+               <Rounding Currency="EUR">0.000</Rounding>
+               <fu:SalesMode>MODE_NORMAL</fu:SalesMode>
+               <fu:LineType>ITEM_SALE</fu:LineType>
+               <fu:Dimension1>-</fu:Dimension1>
+               <fu:Dimension2>MEHRFARBIGES MOTIV</fu:Dimension2>
+               <fu:Dimension3>011</fu:Dimension3>
+               <fu:ProductGroup>8091115</fu:ProductGroup>
+            </Sale>
+            <SequenceNumber>11</SequenceNumber>
+         </LineItem>
+         <LineItem>
+            <Sale>
+               <ItemID Name="BULL'S Motex Flights, -,MEHRFARBIGES MOTIV,011">4022847522022</ItemID>
+               <RegularSalesUnitPrice Currency="EUR">1.290</RegularSalesUnitPrice>
+               <ActualSalesUnitPrice Currency="EUR">1.290</ActualSalesUnitPrice>
+               <ExtendedAmount Currency="EUR">1.290</ExtendedAmount>
+               <ExtendedDiscountAmount Currency="XXX">0</ExtendedDiscountAmount>
+               <Quantity UnitOfMeasureCode="EA">1.0000</Quantity>
+               <Rounding Currency="EUR">0.000</Rounding>
+               <fu:SalesMode>MODE_NORMAL</fu:SalesMode>
+               <fu:LineType>ITEM_SALE</fu:LineType>
+               <fu:Dimension1>-</fu:Dimension1>
+               <fu:Dimension2>MEHRFARBIGES MOTIV</fu:Dimension2>
+               <fu:Dimension3>011</fu:Dimension3>
+               <fu:ProductGroup>8091115</fu:ProductGroup>
+            </Sale>
+            <SequenceNumber>12</SequenceNumber>
+         </LineItem>
+         <LineItem>
+            <Tender TenderType="Cash" TypeCode="Sale">
+               <Amount Currency="EUR">2.780</Amount>
+               <Rounding>0.000</Rounding>
+               <fu:PaymentTypeExternalId>1</fu:PaymentTypeExternalId>
+               <fu:PaymentTypeDescription>Bar</fu:PaymentTypeDescription>
+            </Tender>
+            <SequenceNumber>14</SequenceNumber>
+         </LineItem>
+         <Total TotalType="TransactionGrandAmount" CurrencyCode="EUR">2.780</Total>
+         <Total TotalType="TransactionNetAmount" CurrencyCode="EUR">2.330</Total>
+         <Total TotalType="TransactionTaxAmount" CurrencyCode="EUR">0.440</Total>
+         <Total TotalType="TransactionGrossAmount" CurrencyCode="EUR">2.780</Total>
+      </RetailTransaction>
+      <BusinessDayDate>2024-10-15</BusinessDayDate>
+      <BeginDateTime>2024-10-15T12:09:02.775Z</BeginDateTime>
+      <EndDateTime>2024-10-15T12:11:12.214Z</EndDateTime>
+      <fu:Hashcode>LNK/S2/V6:3616/[invalid]</fu:Hashcode>
+   </Transaction>
+</POSLog>

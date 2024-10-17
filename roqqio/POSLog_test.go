@@ -117,6 +117,33 @@ func TestRetoureWithLinkXml(t *testing.T) {
 	assertThat(t, lineItems[0].Sale.TransactionLink.BusinessDayDate, "2024-10-15")
 }
 
+func TestPosStorno(t *testing.T) {
+	posLog := handleXmlFile(t, "testdata/sale_with_posStorno.xml")
+	assertNil(t, posLog.Transaction.RetailTransaction.Customer)
+	assertNil(t, posLog.GetCustomer())
+	assertNil(t, posLog.GetLoyaltyAccount())
+
+	assertNotNil(t, posLog.GetLineItems())
+	assertThat(t, len(*posLog.GetLineItems()), 3)
+
+	lineItems := *posLog.GetLineItems()
+	assertThat(t, lineItems[0].GetType(), LineTypeSale)
+	assertThat(t, lineItems[0].IsSale(), true)
+	assertThat(t, lineItems[0].IsTender(), false)
+	assertThat(t, lineItems[0].IsTenderChange(), false)
+
+	assertThat(t, lineItems[1].GetType(), LineTypeSale)
+	assertThat(t, lineItems[1].IsSale(), true)
+	assertThat(t, lineItems[1].IsTender(), false)
+	assertThat(t, lineItems[1].IsTenderChange(), false)
+
+	assertThat(t, lineItems[2].GetType(), LineTypeTender)
+	assertThat(t, lineItems[2].IsSale(), false)
+	assertThat(t, lineItems[2].IsTender(), true)
+	assertThat(t, lineItems[2].IsTenderChange(), false)
+	assertThat(t, lineItems[2].Tender.TypeCode, TenderTypeCodeSale)
+}
+
 func assertNotNil[C any](t *testing.T, a *C) {
 	t.Helper()
 	if a == nil {
