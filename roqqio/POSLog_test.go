@@ -4,6 +4,7 @@ import (
 	"encoding/xml"
 	"os"
 	"testing"
+	"time"
 )
 
 func TestCustomerXml(t *testing.T) {
@@ -146,6 +147,25 @@ func TestPosStorno(t *testing.T) {
 	assertThat(t, lineItems[2].Tender.TypeCode, TenderTypeCodeSale)
 }
 
+func TestTransactionTimeParsing(t *testing.T) {
+	posLog := handleXmlFile(t, "testdata/sale_with_customer.xml")
+	rfcTime := posLog.Transaction.EndDateTime.Format(time.RFC3339)
+	assertThat(t, rfcTime, "2024-07-31T09:46:13Z")
+
+	noZone := posLog.Transaction.EndDateTime.Format(time.DateTime)
+	assertThat(t, noZone, "2024-07-31 09:46:13")
+
+	loc, err := time.LoadLocation("Europe/Berlin")
+	if err != nil {
+		t.Fatal(err)
+	}
+	localZoned := posLog.Transaction.EndDateTime.In(loc).Format(time.DateTime)
+	assertThat(t, localZoned, "2024-07-31 11:46:13")
+
+	localRfc := posLog.Transaction.EndDateTime.In(loc).Format(time.RFC3339)
+	assertThat(t, localRfc, "2024-07-31T11:46:13+02:00")
+}
+
 func assertNotNil[C any](t *testing.T, a *C) {
 	t.Helper()
 	if a == nil {
@@ -163,7 +183,7 @@ func assertNil[C any](t *testing.T, a *C) {
 func assertThat[C comparable](t *testing.T, a C, b C) {
 	t.Helper()
 	if a != b {
-		t.Errorf("%v != %v", a, b)
+		t.Errorf("\"%v\" != \"%v\"", a, b)
 	}
 }
 
