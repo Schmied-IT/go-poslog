@@ -34,10 +34,12 @@ type Transaction struct {
 }
 
 type BusinessUnit struct {
-	UnitID struct {
-		Name     string `xml:"Name,attr"`
-		CharData string `xml:",chardata"`
-	} `xml:"UnitID"`
+	UnitID UnitID `xml:"UnitID"`
+}
+
+type UnitID struct {
+	Name     string `xml:"Name,attr"`
+	CharData string `xml:",chardata"`
 }
 
 type OperatorID struct {
@@ -128,7 +130,7 @@ type Sale struct {
 
 type TransactionLink struct {
 	TransactionID          string        `xml:"TransactionID"`
-	BusinessUnit           BusinessUnit  `xml:"BusinessUnit"`
+	BusinessUnit           UnitID        `xml:"BusinessUnit"`
 	WorkstationID          WorkstationID `xml:"WorkstationID"`
 	BusinessDayDate        string        `xml:"BusinessDayDate>Date"`
 	SequenceNumber         string        `xml:"SequenceNumber"`

@@ -115,6 +115,8 @@ func TestRetoureWithLinkXml(t *testing.T) {
 	assertNotNil(t, lineItems[0].Sale.TransactionLink)
 	assertThat(t, lineItems[0].Sale.TransactionLink.SequenceNumber, "3569")
 	assertThat(t, lineItems[0].Sale.TransactionLink.BusinessDayDate, "2024-10-15")
+	assertThat(t, lineItems[0].Sale.TransactionLink.BusinessUnit.CharData, "100")
+	assertThat(t, lineItems[0].Sale.TransactionLink.WorkstationID.CharData, "10001")
 }
 
 func TestPosStorno(t *testing.T) {
