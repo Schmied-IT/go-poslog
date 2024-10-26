@@ -10,6 +10,11 @@ const (
 )
 
 const (
+	SaleLineTypeVoucherSale = "VOUCHER_SALE"
+	SaleLineTypeItemSale    = "ITEM_SALE"
+)
+
+const (
 	TenderTypeCodeSale   = "Sale"
 	TenderTypeCodeRefund = "Refund"
 )
