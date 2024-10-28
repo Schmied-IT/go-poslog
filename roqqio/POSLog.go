@@ -98,7 +98,7 @@ type Address struct {
 
 type LoyaltyAccount struct {
 	CustomerID  string `xml:"CustomerID"`
-	LoyaltyCard struct {
+	LoyaltyCard *struct {
 		PrimaryAccountNumber string `xml:"PrimaryAccountNumber"`
 	} `xml:"LoyaltyCard"`
 }
