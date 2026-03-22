@@ -74,9 +74,9 @@ func TestRetoureXml(t *testing.T) {
 	assertThat(t, lineItems[0].IsSale(), true)
 	assertThat(t, lineItems[0].IsTender(), false)
 	assertThat(t, lineItems[0].IsTenderChange(), false)
-	assertThat(t, lineItems[0].Sale.Quantity.Value < 0, true)
-	assertThat(t, lineItems[0].Sale.Quantity.Value, -1.0)
-	assertThat(t, lineItems[0].Sale.ActualSalesUnitPrice.Value > 0, true) // Prices are Always Positive
+	assertThat(t, lineItems[0].Sale.Quantity.AsFloat() < 0, true)
+	assertThat(t, lineItems[0].Sale.Quantity.AsFloat(), -1.0)
+	assertThat(t, lineItems[0].Sale.ActualSalesUnitPrice.AsFloat() > 0, true) // Prices are Always Positive
 
 	assertThat(t, lineItems[1].GetType(), LineTypeTender)
 	assertThat(t, lineItems[1].IsSale(), false)
@@ -102,9 +102,9 @@ func TestRetoureWithLinkXml(t *testing.T) {
 	assertThat(t, lineItems[0].IsSale(), true)
 	assertThat(t, lineItems[0].IsTender(), false)
 	assertThat(t, lineItems[0].IsTenderChange(), false)
-	assertThat(t, lineItems[0].Sale.Quantity.Value < 0, true)
-	assertThat(t, lineItems[0].Sale.Quantity.Value, -1.0)
-	assertThat(t, lineItems[0].Sale.ActualSalesUnitPrice.Value > 0, true) // Prices are Always Positive
+	assertThat(t, lineItems[0].Sale.Quantity.AsFloat() < 0, true)
+	assertThat(t, lineItems[0].Sale.Quantity.AsFloat(), -1.0)
+	assertThat(t, lineItems[0].Sale.ActualSalesUnitPrice.AsFloat() > 0, true) // Prices are Always Positive
 
 	assertThat(t, lineItems[1].GetType(), LineTypeTender)
 	assertThat(t, lineItems[1].IsSale(), false)
@@ -145,6 +145,22 @@ func TestPosStorno(t *testing.T) {
 	assertThat(t, lineItems[2].IsTender(), true)
 	assertThat(t, lineItems[2].IsTenderChange(), false)
 	assertThat(t, lineItems[2].Tender.TypeCode, TenderTypeCodeSale)
+}
+
+func TestFloatPrice(t *testing.T) {
+	posLog := handleXmlFile(t, "testdata/sale_floatprice.xml")
+	assertNotNil(t, posLog.GetLineItems())
+	assertThat(t, len(*posLog.GetLineItems()), 2)
+
+	lineItems := *posLog.GetLineItems()
+	assertThat(t, lineItems[0].GetType(), LineTypeSale)
+	assertThat(t, lineItems[0].Sale.ActualSalesUnitPrice.Value, "79.990")
+	assertThat(t, lineItems[0].Sale.ActualSalesUnitPrice.AsFloat(), 79.99)
+	assertThat(t, lineItems[0].Sale.ActualSalesUnitPrice.AsCents(), 7999)
+	assertThat(t, lineItems[0].Sale.ActualSalesUnitPrice.AsCurrencyDecimals(3), 79990)
+	assertThat(t, lineItems[0].Sale.ActualSalesUnitPrice.AsCurrencyDecimals(5), 7999000)
+	// Test invalid Float Multiplication
+	assertThat(t, int64(lineItems[0].Sale.ActualSalesUnitPrice.AsFloat()*100.0), 7998)
 }
 
 func TestTransactionTimeParsing(t *testing.T) {

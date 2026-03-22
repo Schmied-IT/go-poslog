@@ -1,6 +1,11 @@
 package roqqio
 
-import "time"
+import (
+	"math"
+	"strconv"
+	"strings"
+	"time"
+)
 
 const (
 	LineTypeSale         = "Sale"
@@ -121,16 +126,28 @@ type Sale struct {
 		Name     string `xml:"Name,attr"`
 		CharData string `xml:",chardata"`
 	} `xml:"ItemID"`
-	LineType     string `xml:"LineType"`
-	ProductGroup string `xml:"ProductGroup"`
-	Quantity     struct {
-		UnitOfMeasureCode string  `xml:"UnitOfMeasureCode,attr"`
-		Value             float64 `xml:",chardata"`
-	} `xml:"Quantity"`
+	LineType              string           `xml:"LineType"`
+	ProductGroup          string           `xml:"ProductGroup"`
+	Quantity              Quantity         `xml:"Quantity"`
 	RegularSalesUnitPrice CurrencyAmount   `xml:"RegularSalesUnitPrice"`
 	Rounding              CurrencyAmount   `xml:"Rounding"`
 	SalesMode             string           `xml:"SalesMode"`
 	TransactionLink       *TransactionLink `xml:"TransactionLink"`
+}
+
+type Quantity struct {
+	UnitOfMeasureCode string `xml:"UnitOfMeasureCode,attr"`
+	Value             string `xml:",chardata"`
+}
+
+func (q *Quantity) AsFloat() float64 {
+	f, _ := strconv.ParseFloat(q.Value, 64)
+	return f
+}
+
+func (q *Quantity) AsInt() int64 {
+	i, _ := strconv.ParseInt(q.Value, 10, 64)
+	return i
 }
 
 type TransactionLink struct {
@@ -160,8 +177,32 @@ type TenderChange struct {
 }
 
 type CurrencyAmount struct {
-	Currency string  `xml:"Currency,attr"`
-	Value    float64 `xml:",chardata"`
+	Currency string `xml:"Currency,attr"`
+	Value    string `xml:",chardata"`
+}
+
+func (c *CurrencyAmount) AsFloat() float64 {
+	f, _ := strconv.ParseFloat(c.Value, 64)
+	return f
+}
+
+func (c *CurrencyAmount) AsCents() int64 {
+	return c.AsCurrencyDecimals(2)
+}
+
+func (c *CurrencyAmount) AsCurrencyDecimals(decimals int) int64 {
+	factor := int64(math.Pow10(decimals))
+	split := strings.Split(c.Value, ".")
+	major, _ := strconv.ParseInt(split[0], 10, 64)
+	for {
+		if decimals > len(split[1]) {
+			split[1] = split[1] + "0"
+		} else {
+			break
+		}
+	}
+	minor, _ := strconv.ParseInt(split[1][0:decimals], 10, 64)
+	return major*factor + minor
 }
 
 func (l *LineItem) GetType() string {
