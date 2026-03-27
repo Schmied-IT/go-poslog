@@ -146,7 +146,8 @@ func (q *Quantity) AsFloat() float64 {
 }
 
 func (q *Quantity) AsInt() int64 {
-	i, _ := strconv.ParseInt(q.Value, 10, 64)
+	val := strings.Split(q.Value, ".")[0]
+	i, _ := strconv.ParseInt(val, 10, 64)
 	return i
 }
 

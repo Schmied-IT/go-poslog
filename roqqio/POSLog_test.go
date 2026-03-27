@@ -76,6 +76,8 @@ func TestRetoureXml(t *testing.T) {
 	assertThat(t, lineItems[0].IsTenderChange(), false)
 	assertThat(t, lineItems[0].Sale.Quantity.AsFloat() < 0, true)
 	assertThat(t, lineItems[0].Sale.Quantity.AsFloat(), -1.0)
+	assertThat(t, lineItems[0].Sale.Quantity.AsInt() < 0, true)
+	assertThat(t, lineItems[0].Sale.Quantity.AsInt(), -1)
 	assertThat(t, lineItems[0].Sale.ActualSalesUnitPrice.AsFloat() > 0, true) // Prices are Always Positive
 
 	assertThat(t, lineItems[1].GetType(), LineTypeTender)
@@ -104,6 +106,8 @@ func TestRetoureWithLinkXml(t *testing.T) {
 	assertThat(t, lineItems[0].IsTenderChange(), false)
 	assertThat(t, lineItems[0].Sale.Quantity.AsFloat() < 0, true)
 	assertThat(t, lineItems[0].Sale.Quantity.AsFloat(), -1.0)
+	assertThat(t, lineItems[0].Sale.Quantity.AsInt() < 0, true)
+	assertThat(t, lineItems[0].Sale.Quantity.AsInt(), -1)
 	assertThat(t, lineItems[0].Sale.ActualSalesUnitPrice.AsFloat() > 0, true) // Prices are Always Positive
 
 	assertThat(t, lineItems[1].GetType(), LineTypeTender)
